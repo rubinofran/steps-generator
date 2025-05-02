@@ -1,50 +1,7 @@
-/*
-ejemplo step 
-[
-    {"fn":"wait","for":4000},
-    {"fn":"press","key":"ArrowDown"},
-    {"fn":"wait","for":4000},
-    {"fn":"clickifexists","field":"#onetrust-accept-btn-handler"},
-    {"fn":"wait","for":4000},
-    {"fn":"click","field":"div[class*=\"myAccountWrapperLink\"]","type":"raro"},
-    {"fn":"wait","field":"div.vtex-login-2-x-emailPasswordOptionBtn"},
-    {"fn":"click","field":"div.vtex-login-2-x-emailPasswordOptionBtn","type":"text"},
-    {"fn":"wait","field":"div.vtex-login-2-x-inputContainerEmail input"},
-    {"fn":"complete","field":"div.vtex-login-2-x-inputContainerEmail input","value":"email"},
-    {"fn":"wait","for":2000},
-    {"fn":"complete","field":"div.vtex-login-2-x-inputContainerPassword input","value":"pass"},
-    {"fn":"wait","for":2000},
-    {"fn":"click","field":"div.vtex-login-2-x-sendButton span","type":"text"},
-    {"fn":"wait","for":10000},
-    {"fn":"clickifexists","field":"#onetrust-accept-btn-handler"},
-    {"fn":"click","field":"div[class*=\"openIconContainer\"]","type":"raro"},
-    {"fn":"wait","for":10000},
-    {"fn":"click","field":"div.valtech-carrefourar-region-locator-1-x-methodsContainer button","type":"text"},
-    {"fn":"wait","for":2000},
-    {"fn":"click","field":".valtech-carrefourar-region-locator-1-x-orderTypeContainer[data-name=Food]","type":"text"},
-    {"fn":"wait","for":4000},
-    {"fn":"wait","selector":"div.fl:nth-child(1) input"},
-    {"fn":"complete","field":"div.fl:nth-child(1) input","value":"provincia"},
-    {"fn":"press","key":"Enter"},
-    {"fn":"wait","for":2000},
-    {"fn":"wait","selector":"div.fl:nth-child(2) input"},
-    {"fn":"complete","field":"div.fl:nth-child(2) input","value":"partido"},
-    {"fn":"press","key":"ArrowDown"},
-    {"fn":"press","key":"Enter"},
-    {"fn":"wait","for":5000},
-    {"fn":"click","field":"div.valtech-carrefourar-region-locator-1-x-storeBlock","type":"text"},
-    {"fn":"wait","for":2000},
-    {"fn":"wait","selector":"#rl-step2"},
-    {"fn":"click","field":"#rl-step2","type":"raro"},
-    {"fn":"wait","for":10000},
-    {"fn":"goto","value":"paramUrl","case":"complete"},
-    {"fn":"wait","for":4000},
-    {"fn":"press","key":"ArrowDown"},
-    {"fn":"scroll","field":".lyracons-region-login-1-x-drawerContent","scrollIncrement":3}
-    {"fn":"wait","for":4000}]
-*/
+/* ------------------------------------ */
+/* STEPS FUNCTIONS */
 
-// FALTA VARIANTE FIELD ------------------>
+// FALTA VARIANTE FIELD ------------------> {"fn":"wait","field":"div.vtex-login-2-x-emailPasswordOptionBtn"},
 const waitFN = (time) => `{"fn":"wait","for":${time}}`
 // EXAMPLE) time: 5000
 // console.log(waitFN(5000))
@@ -57,7 +14,7 @@ const completeFN = (field, value) => `{"fn":"complete","field":"${field}","value
 // EXAMPLE) field: 'div.vtex-login-2-x-inputContainerEmail input', value: 'email' 
 // console.log(completeFN('div.vtex-login-2-x-inputContainerEmail input', 'email'))
 
-// FALTA VARIANTE TIMES ------------------>
+// FALTA VARIANTE TIMES ------------------> {"fn":"press","key":"ArrowDown","value":"provincia_times"},
 const pressFN = (key) => `{"fn":"press","key":"${key}"}`
 // EXAMPLE) key: 'Enter' (key: 'ArrowDown' variable)
 // console.log(pressFN('Enter'))    
@@ -82,6 +39,9 @@ const scrollFN = (field, scrollIncrement) => `{"fn":"scroll","field":"${field}",
 // EXAMPLE) field: '.lyracons-region-login-1-x-drawerContent', scrollIncrement: 3
 // console.log(scrollFN('.lyracons-region-login-1-x-drawerContent', 3))
 
+/* ------------------------------------ */
+/* OPTIONS */
+
 const stepTypes = [
     { name: "wait", fn: waitFN, vars: ["time"] },
     { name: "click", fn: clickFN, vars: ["field", "type"] },
@@ -94,7 +54,12 @@ const stepTypes = [
     { name: "scroll", fn: scrollFN, vars: ["field", "scrollIncrement"] }
 ]
 
+/* ------------------------------------ */
+/* MAIN APP FUNCTIONS */
+
+// Associated with button "+" to add a new step
 const newStep = () => {
+    
     // 
     let listContainer = document.querySelector("#stepList");
   
@@ -141,10 +106,11 @@ const newStep = () => {
 
 let resultStep = "";
 let formattedResultStep = "";
+
+// Associated with button "GENERATE" to generate the result
 const showResult = () => {
     let result = document.querySelector("#resultSteps");
     let formattedResult = document.querySelector("#formattedResultSteps");
-
     let steps = document.querySelectorAll("span");
     if(steps.length > 0) {
         resultStep = "["; 
@@ -158,17 +124,21 @@ const showResult = () => {
     } else {
         resultStep = "EMPTY STEPS";
     }
+    result.textContent = "";
+    formattedResult.textContent = "";
     result.textContent = resultStep;
     formattedResult.textContent = formattedResultStep;
     console.log("A. Result:\n", resultStep);
     console.log("B. Formatted result:\n", formattedResultStep);
 }
 
+// Associated with button "COPY A" to copy the result in normal format
 const copyResultStep = () => {
     resultStep === "" ? alert("No steps to copy!") : alert("Result copied to clipboard!");
     navigator.clipboard.writeText(resultStep);
 }
 
+// Associated with button "COPY B" to copy the result in special format
 const copyFormattedResultStep = () => {
     formattedResultStep === "" ? alert("No steps to copy!") : alert("Formatted result copied to clipboard!");
     navigator.clipboard.writeText(formattedResultStep);
