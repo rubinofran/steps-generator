@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StepGen</title>
+    <link rel="stylesheet" href="generator.css">
+</head>
+<body>
+    <h1>Steps Generator</h1>
+    <div id="stepList">
+        <!--  -->
+    </div>
+    <p><button onclick="newStep()" class="newStepButton">+</button></p>
+    <p>
+        <button onclick="showResult()" class="generateButton">GENERATE</button>
+        <button onclick="copyResultStep()" class="copyResultStepButton">COPY A</button>
+        <button onclick="copyFormattedResultStep()" class="copyFormattedResultStepButton">COPY B</button>
+    </p>
+    <h2>A.</h2>
+    <div id="resultSteps"></div>
+    <h2>B.</h2>
+    <textarea id="formattedResultSteps" name="textarea" rows="20" cols="100"></textarea>
+    <script src="generator.js"></script>
+</body>
+</html>

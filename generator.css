@@ -1,0 +1,53 @@
+select, span, button {
+    padding: 5px 10px;
+    height: 30px;
+}
+
+select {
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 150px;
+}
+
+span {
+    margin: 0px 10px;
+}
+
+button {
+    font-weight: bold;
+    border-radius: 5px;
+    border-width: 0;
+}
+
+.newStepButton {
+    background-color:#00cf30;
+    color: rgb(255, 255, 255);
+    width: 150px;
+}
+
+.generateButton {
+    background-color:darkcyan;
+    color: rgb(255, 255, 255);
+    width: 150px;
+}
+
+.copyResultStepButton, .copyFormattedResultStepButton {
+    background-color:darkcyan;
+    color: rgb(255, 255, 255);
+    width: 150px;
+}
+
+.configButton {
+    background-color:#00cf30;
+    color: rgb(255, 255, 255);
+}
+
+.deleteButton {
+    background-color:tomato;
+    color: rgb(255, 255, 255);
+}
+
+#resultSteps {
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
