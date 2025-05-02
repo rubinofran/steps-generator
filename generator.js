@@ -45,6 +45,10 @@ const scrollFN = (field, scrollIncrement) => `{"fn":"scroll","field":"${field}",
 // EXAMPLE) field: '.lyracons-region-login-1-x-drawerContent', scrollIncrement: 3
 // console.log(scrollFN('.lyracons-region-login-1-x-drawerContent', 3))
 
+const windowScrollFN = (increment, direction, delay) => `{"fn":"windowScroll","increment":"${increment}","direction":"${direction}","delay":"${delay}"}`
+// EXAMPLE) increment: 90, direction: 'DOWN', delay: 1000   
+// console.log(windowScrollFN(90, 'DOWN', 1000))
+
 /* ------------------------------------ */
 /* OPTIONS */
 
@@ -60,6 +64,7 @@ const stepTypes = [
     { name: "exec JS", fn: execJSFN, vars: ["code"], showTitle: false, title: "" },
     { name: "goto", fn: gotoFN, vars: ["value"], showTitle: false, title: "" },
     { name: "scroll", fn: scrollFN, vars: ["field", "scrollIncrement"], showTitle: false, title: "" },
+    { name: "window scroll", fn: windowScrollFN, vars: ["increment", "direction", "delay"], showTitle: true, title: "algunos ejemplos de direction: UP / DOWN" }    
 ]
 
 /* ------------------------------------ */
